@@ -55,10 +55,6 @@ for repo in "${CUSTOM_NODES_REPOS[@]}"; do
   fi
 done
 
-# Fix Whisper Tritton
-
-
-
 # Função para download de modelos
 download_model() {
   URL=$1
