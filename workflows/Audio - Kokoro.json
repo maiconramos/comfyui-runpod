@@ -1,0 +1,327 @@
+{
+  "last_node_id": 32,
+  "last_link_id": 32,
+  "nodes": [
+    {
+      "id": 32,
+      "type": "SaveAudioAdvanced_BETA",
+      "pos": [
+        254.41319274902344,
+        13.442753791809082
+      ],
+      "size": [
+        390.5999755859375,
+        154
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 28
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveAudioAdvanced_BETA"
+      },
+      "widgets_values": [
+        "ComfyUI",
+        "mp3",
+        "PCM_32",
+        5,
+        192
+      ]
+    },
+    {
+      "id": 27,
+      "type": "ShowTextForGPT",
+      "pos": [
+        979.6543579101562,
+        314.62841796875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 26,
+          "widget": {
+            "name": "text"
+          }
+        },
+        {
+          "name": "output_dir",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "output_dir"
+          },
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowTextForGPT"
+      },
+      "widgets_values": [
+        "",
+        "",
+        "{\"data\": [{\"value\": \"Disciplina\", \"start\": 0.0, \"end\": 0.54}, {\"value\": \"n\\u00e3o\", \"start\": 0.54, \"end\": 0.72}, {\"value\": \"\\u00e9\", \"start\": 0.72, \"end\": 0.84}, {\"value\": \"sobre\", \"start\": 0.84, \"end\": 1.04}, {\"value\": \"perfei\\u00e7\\u00e3o,\", \"start\": 1.04, \"end\": 1.66}, {\"value\": \"mas\", \"start\": 2.04, \"end\": 2.12}, {\"value\": \"sim\", \"start\": 2.12, \"end\": 2.38}, {\"value\": \"sobre\", \"start\": 2.38, \"end\": 2.68}, {\"value\": \"compromisso\", \"start\": 2.68, \"end\": 3.32}, {\"value\": \"di\\u00e1rio.\", \"start\": 3.32, \"end\": 3.82}]}"
+      ]
+    },
+    {
+      "id": 29,
+      "type": "CreateJsonNode",
+      "pos": [
+        624.7993774414062,
+        329.80718994140625
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "*",
+          "link": 32
+        },
+        {
+          "name": "json_str",
+          "type": "STRING",
+          "link": null,
+          "widget": {
+            "name": "json_str"
+          },
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "json_str",
+          "type": "STRING",
+          "links": [
+            26
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateJsonNode"
+      },
+      "widgets_values": [
+        "data",
+        false,
+        ""
+      ]
+    },
+    {
+      "id": 13,
+      "type": "Apply Whisper",
+      "pos": [
+        233.90052795410156,
+        294.6785583496094
+      ],
+      "size": [
+        315,
+        122
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "segments_alignment",
+          "type": "whisper_alignment",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "words_alignment",
+          "type": "whisper_alignment",
+          "links": [
+            32
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Apply Whisper"
+      },
+      "widgets_values": [
+        "base",
+        "Portuguese"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "KokoroSpeaker",
+      "pos": [
+        -690.3048706054688,
+        221.38580322265625
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "speaker",
+          "type": "KOKORO_SPEAKER",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KokoroSpeaker"
+      },
+      "widgets_values": [
+        "pm_alex"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "KokoroGenerator",
+      "pos": [
+        -284.1516418457031,
+        227.2737274169922
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "speaker",
+          "type": "KOKORO_SPEAKER",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            8,
+            28
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KokoroGenerator"
+      },
+      "widgets_values": [
+        "Disciplina não é sobre perfeição, mas sim sobre compromisso diário.",
+        1,
+        "Italian"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      0,
+      "KOKORO_SPEAKER"
+    ],
+    [
+      8,
+      1,
+      0,
+      13,
+      0,
+      "AUDIO"
+    ],
+    [
+      26,
+      29,
+      0,
+      27,
+      0,
+      "STRING"
+    ],
+    [
+      28,
+      1,
+      0,
+      32,
+      0,
+      "AUDIO"
+    ],
+    [
+      32,
+      13,
+      2,
+      29,
+      0,
+      "*"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.45,
+      "offset": [
+        2146.3738640679253,
+        629.3929392496744
+      ]
+    },
+    "node_versions": {
+      "ComfyUI-BETA-Helpernodes": "1d648919368fe46dc3c93e122f720109de26be71",
+      "comfyui-mixlab-nodes": "b2bb1876def6330fccf1e03cc69d2166cae7bedb",
+      "ComfyUI-Whisper": "aef1699679c763ce9ddcfbfbf1118d82e4da94f0",
+      "comfyui-kokoro": "4622d9e4adf5aa1bfc38eb552ac6047c20c212c9"
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
